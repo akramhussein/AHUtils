@@ -108,7 +108,7 @@ public extension String {
 
      :returns: A String with `maxLength` characters or less
      */
-    func ellipsize(maxLength: Int) -> String {
+    public func ellipsize(maxLength: Int) -> String {
         if (maxLength >= 2) && (self.characters.count > maxLength) {
             let index1 = self.characters.index(self.startIndex, offsetBy: (maxLength + 1) / 2) // `+ 1` has the same effect as an int ceil
             let index2 = self.characters.index(self.endIndex, offsetBy: maxLength / -2)
@@ -136,7 +136,19 @@ public extension String {
         return trimmed
     }
 
-    func containsIgnoringCase(find: String) -> Bool {
+    public func containsIgnoringCase(find: String) -> Bool {
         return (self.range(of: find, options: String.CompareOptions.caseInsensitive, range: nil, locale: nil) != nil)
+    }
+    
+    public var first: String {
+        return String(characters.prefix(1))
+    }
+    
+    public var last: String {
+        return String(characters.suffix(1))
+    }
+    
+    public var uppercaseFirst: String {
+        return self.first.uppercased() + String(characters.dropFirst())
     }
 }
