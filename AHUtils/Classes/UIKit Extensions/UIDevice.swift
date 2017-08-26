@@ -37,4 +37,29 @@ public extension UIDevice {
             return .unknown
         }
     }
+    
+    var iosVersion: Double? {
+        guard let version = Double(self.systemVersion) else { return nil }
+        return version
+    }
+
+    var iOS11: Bool {
+        return self.iosVersion ?? 0.0 >= 11.0
+    }
+    
+    var iOS10: Bool {
+        return self.iosVersion ?? 0.0 >= 10.0
+    }
+    
+    var iOS9: Bool {
+        return self.iosVersion ?? 0.0 >= 9.0
+    }
+    
+    var iOS8: Bool {
+        return self.iosVersion ?? 0.0 >= 8.0
+    }
+    
+    var iOS7: Bool {
+        return self.iosVersion ?? 0.0 >= 7.0
+    }
 }
