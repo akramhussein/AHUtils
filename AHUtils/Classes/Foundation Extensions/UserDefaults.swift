@@ -1,3 +1,11 @@
+//
+//  Defaults.swift
+//  AHUtils
+//
+//  Created by Akram Hussein on 08/23/2017.
+//  Copyright (c) 2017 Akram Hussein. All rights reserved.
+//
+
 import Foundation
 
 public struct Defaults {
