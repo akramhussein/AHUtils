@@ -19,4 +19,5 @@ DESC
   }
 
   s.frameworks    = 'Foundation', 'UIKit'
+  s.dependency 'MBProgressHUD'
 end
