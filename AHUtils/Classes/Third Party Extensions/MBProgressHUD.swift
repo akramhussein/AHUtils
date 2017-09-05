@@ -53,7 +53,7 @@ public extension MBProgressHUD {
     }
 
     func setHUDEndStatusWithImage(message: String, detailsMessage: String? = nil, imagePath: String, delay: Double = 1.0) {
-        let image = UIImage(named: imagePath)
+        let image = Resources.image(imagePath)
         let imageView = UIImageView(image: image)
         self.customView = imageView
         self.mode = .customView
