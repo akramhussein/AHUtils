@@ -44,7 +44,7 @@ public extension MBProgressHUD {
         return hud
     }
 
-    func setHUDToComplete(message: String, detailsMessage: String? = nil, delay: Double = 1.0) {
+    func setHUDToComplete(message: String = "", detailsMessage: String? = nil, delay: Double = 1.0) {
         self.setHUDEndStatusWithImage(message: message, detailsMessage: detailsMessage, imagePath: "HudCheckmark", delay: delay)
     }
 
