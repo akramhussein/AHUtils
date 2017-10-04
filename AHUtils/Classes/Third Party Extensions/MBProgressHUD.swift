@@ -62,4 +62,12 @@ public extension MBProgressHUD {
         self.removeFromSuperViewOnHide = true
         self.hide(animated: true, afterDelay: delay)
     }
+    
+    func setHUDEndStatus(message: String, detailsMessage: String? = nil, delay: Double = 1.0) {
+        self.mode = .customView
+        self.label.text = message
+        self.detailsLabel.text = detailsMessage
+        self.removeFromSuperViewOnHide = true
+        self.hide(animated: true, afterDelay: delay)
+    }
 }
