@@ -20,9 +20,8 @@ public extension UIBarButtonItem {
         return barButton
     }
 
-    static func imageButton(_ imageName: String, delegate: AnyObject, action: Selector) -> UIBarButtonItem {
-        let icon = UIImage(named: imageName)!.withRenderingMode(.alwaysTemplate)
-        let barButton = UIBarButtonItem(image: icon, style: .plain, target: delegate, action: action)
+    static func imageButton(_ image: UIImage?, delegate: AnyObject, action: Selector) -> UIBarButtonItem {
+        let barButton = UIBarButtonItem(image: image, style: .plain, target: delegate, action: action)
         return barButton
     }
 

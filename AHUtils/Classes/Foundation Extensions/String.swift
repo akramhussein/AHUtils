@@ -13,16 +13,8 @@ public extension String {
         return NSLocalizedString(self, comment: "")
     }
 
-    var length: Int {
-        return self.characters.count
-    }
-
     var trim: String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-
-    func substring(length: Int) -> String {
-        return self.substring(to: self.index(self.startIndex, offsetBy: length))
     }
 
     subscript(i: Int) -> String {
@@ -67,15 +59,6 @@ public extension String {
         return self.range(of: other) != nil
     }
 
-    public func truncate(_ length: Int) -> String {
-        if self.characters.count > length {
-            let begining = self.substring(length: length)
-            return "\(begining)…"
-        } else {
-            return self
-        }
-    }
-
     public func startsWith(_ other: String) -> Bool {
         // rangeOfString returns nil if other is empty, destroying the analogy with (ordered) sets.
         if other.isEmpty {
@@ -96,26 +79,6 @@ public extension String {
             return range.upperBound == self.endIndex
         }
         return false
-    }
-
-    /**
-     Ellipsizes a String only if it's longer than `maxLength`
-
-     "ABCDEF".ellipsize(4)
-     // "AB…EF"
-
-     :param: maxLength The maximum length of the String.
-
-     :returns: A String with `maxLength` characters or less
-     */
-    public func ellipsize(maxLength: Int) -> String {
-        if (maxLength >= 2) && (self.characters.count > maxLength) {
-            let index1 = self.characters.index(self.startIndex, offsetBy: (maxLength + 1) / 2) // `+ 1` has the same effect as an int ceil
-            let index2 = self.characters.index(self.endIndex, offsetBy: maxLength / -2)
-
-            return self.substring(to: index1) + "…\u{2060}" + self.substring(from: index2)
-        }
-        return self
     }
 
     fileprivate var stringWithAdditionalEscaping: String {
@@ -140,15 +103,7 @@ public extension String {
         return (self.range(of: find, options: String.CompareOptions.caseInsensitive, range: nil, locale: nil) != nil)
     }
     
-    public var first: String {
-        return String(characters.prefix(1))
-    }
-    
-    public var last: String {
-        return String(characters.suffix(1))
-    }
-    
     public var uppercaseFirst: String {
-        return self.first.uppercased() + String(characters.dropFirst())
+        return self[0].uppercased() + String(self.dropFirst())
     }
 }
