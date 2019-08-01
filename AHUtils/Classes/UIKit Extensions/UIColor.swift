@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIColor {
-    public class var separatorGrey: UIColor {
+    class var separatorGrey: UIColor {
         return UIColor(rgba: "#C8C7CC")
     }
 }

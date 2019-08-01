@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIView {
 
-    public func layoutAttachAll(to parentView: UIView) {
+    func layoutAttachAll(to parentView: UIView) {
         var constraints = [NSLayoutConstraint]()
         self.translatesAutoresizingMaskIntoConstraints = false
         constraints.append(NSLayoutConstraint(item: self, attribute: .left, relatedBy: .equal, toItem: parentView, attribute: .left, multiplier: 1.0, constant: 0))
@@ -20,7 +20,7 @@ public extension UIView {
         parentView.addConstraints(constraints)
     }
 
-    public func addSubviewAndAttach(subview: UIView, clipsToBounds: Bool = true) {
+    func addSubviewAndAttach(subview: UIView, clipsToBounds: Bool = true) {
         self.addSubview(subview)
         subview.layoutAttachAll(to: self)
         self.clipsToBounds = true
