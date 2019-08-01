@@ -51,7 +51,7 @@ public extension String {
         return self.replace(" ", replacement: "")
     }
 
-    public func contains(_ other: String) -> Bool {
+    func contains(_ other: String) -> Bool {
         // rangeOfString returns nil if other is empty, destroying the analogy with (ordered) sets.
         if other.isEmpty {
             return true
@@ -59,7 +59,7 @@ public extension String {
         return self.range(of: other) != nil
     }
 
-    public func startsWith(_ other: String) -> Bool {
+    func startsWith(_ other: String) -> Bool {
         // rangeOfString returns nil if other is empty, destroying the analogy with (ordered) sets.
         if other.isEmpty {
             return true
@@ -70,7 +70,7 @@ public extension String {
         return false
     }
 
-    public func endsWith(_ other: String) -> Bool {
+    func endsWith(_ other: String) -> Bool {
         // rangeOfString returns nil if other is empty, destroying the analogy with (ordered) sets.
         if other.isEmpty {
             return true
@@ -85,13 +85,13 @@ public extension String {
         return self.replacingOccurrences(of: "|", with: "%7C", options: NSString.CompareOptions(), range: nil)
     }
 
-    public var asURL: URL? {
+    var asURL: URL? {
         return URL(string: self) ?? URL(string: self.stringWithAdditionalEscaping)
     }
 
     /// Returns a new string made by removing the leading String characters contained
     /// in a given character set.
-    public func stringByTrimmingLeadingCharactersInSet(_ set: CharacterSet) -> String {
+    func stringByTrimmingLeadingCharactersInSet(_ set: CharacterSet) -> String {
         var trimmed = self
         while trimmed.rangeOfCharacter(from: set)?.lowerBound == trimmed.startIndex {
             trimmed.remove(at: trimmed.startIndex)
@@ -99,11 +99,11 @@ public extension String {
         return trimmed
     }
 
-    public func containsIgnoringCase(find: String) -> Bool {
+    func containsIgnoringCase(find: String) -> Bool {
         return (self.range(of: find, options: String.CompareOptions.caseInsensitive, range: nil, locale: nil) != nil)
     }
     
-    public var uppercaseFirst: String {
+    var uppercaseFirst: String {
         return self[0].uppercased() + String(self.dropFirst())
     }
 }

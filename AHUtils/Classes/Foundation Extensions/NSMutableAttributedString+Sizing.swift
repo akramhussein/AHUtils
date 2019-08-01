@@ -12,15 +12,14 @@ import UIKit
 public extension NSMutableAttributedString {
     /** Makes an attributes string with the specified (plain) string and font but resizes the font smaller
      to fit the width if required. Can return nil, if there is no way to make it fit */
-    convenience init?(string: String, font: UIFont, maxWidth: CGFloat, color: UIColor, alignment: NSMutableParagraphStyle) {
+    convenience init?(string: String, font: UIFont, maxWidth: CGFloat, color: UIColor) {
         self.init()
 
         var size = font.pointSize
         while size > 1 {
             let attrs = [
-                NSAttributedStringKey.font: font.withSize(size),
-                NSAttributedStringKey.foregroundColor: color,
-                NSAttributedStringKey.paragraphStyle: alignment
+                NSAttributedString.Key.font: font.withSize(size),
+                NSAttributedString.Key.foregroundColor: color
             ]
             let attrString = NSAttributedString(string: string, attributes: attrs)
             if attrString.size().width <= maxWidth {
@@ -31,6 +30,7 @@ public extension NSMutableAttributedString {
         }
         return nil
     }
+
 }
 
 public func += (left: inout NSMutableAttributedString, right: NSAttributedString) {

@@ -21,7 +21,8 @@ public extension UIBarButtonItem {
     }
 
     static func imageButton(_ image: UIImage?, delegate: AnyObject, action: Selector) -> UIBarButtonItem {
-        let barButton = UIBarButtonItem(image: image, style: .plain, target: delegate, action: action)
+        let icon = image?.withRenderingMode(.alwaysTemplate)
+        let barButton = UIBarButtonItem(image: icon, style: .plain, target: delegate, action: action)
         return barButton
     }
 
@@ -32,12 +33,11 @@ public extension UIBarButtonItem {
     }
 
     static func textBarButton(_ text: String, delegate: AnyObject, action: Selector, color: UIColor = .white) -> UIBarButtonItem {
-        let button = UIBarButtonItem(title: text, style: .plain, target: delegate, action: action)
-        return button
+        return UIBarButtonItem(title: text, style: .plain, target: delegate, action: action)
     }
 
-    static func activityIndicator(_ style: UIActivityIndicatorViewStyle = .white) -> UIBarButtonItem {
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: style)
+    static func activityIndicator(_ style: UIActivityIndicatorView.Style = .white) -> UIBarButtonItem {
+        let activityIndicator = UIActivityIndicatorView(style: style)
         activityIndicator.hidesWhenStopped = true
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
