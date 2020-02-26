@@ -10,7 +10,17 @@ import Foundation
 
 public extension String {
     var localized: String {
-        return NSLocalizedString(self, comment: "")
+        let value = NSLocalizedString(self, comment: "")
+        if value != self || NSLocale.preferredLanguages.first == "en" {
+            return value
+        }
+
+        // Fall back to en
+        guard
+            let path = Bundle.main.path(forResource: "en", ofType: "lproj"),
+            let bundle = Bundle(path: path)
+            else { return value }
+        return NSLocalizedString(self, bundle: bundle, comment: "")
     }
 
     var trim: String {
@@ -102,7 +112,7 @@ public extension String {
     func containsIgnoringCase(find: String) -> Bool {
         return (self.range(of: find, options: String.CompareOptions.caseInsensitive, range: nil, locale: nil) != nil)
     }
-    
+
     var uppercaseFirst: String {
         return self[0].uppercased() + String(self.dropFirst())
     }
